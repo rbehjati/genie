@@ -13,8 +13,8 @@ public class Jenny {
 	public native String[] generator(int argc, String[] argv);
 
 	public List<Combination> generateCombinations(int n, List<Feature> features) {
-		if(features.size() > 26) {
-			throw new RuntimeException("Don't know how to handle more that 26 features yet!");
+		if(features.stream().filter(f -> f.getClassCount() > 26).findAny().isPresent()) {
+			throw new RuntimeException("Don't know how to handle more that 26 equivalence classes in a feature yet!");
 		}
 		List<String> params = new ArrayList<>();
 		params.add("n" + n);
@@ -27,7 +27,7 @@ public class Jenny {
 			Iterator<Feature> featuresIterator = features.iterator();
 			combo.chars().forEach(c -> {
 				Feature feature = featuresIterator.next();
-				featureCombination.addEquvalenceClassForFeature(feature, feature.getClassLabel(c - 'a'));
+				featureCombination.addEquivalenceClassForFeature(feature, feature.getClassLabel(c - 'a'));
 			});
 			featureCombos.add(featureCombination);
 		}

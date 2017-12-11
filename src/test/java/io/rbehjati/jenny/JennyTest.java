@@ -26,8 +26,8 @@ public class JennyTest {
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
 				Combination combo = new Combination();
-				combo.addEquvalenceClassForFeature(nameFeature, nameFeature.getClassLabel(i));
-				combo.addEquvalenceClassForFeature(ageFeature, ageFeature.getClassLabel(j));
+				combo.addEquivalenceClassForFeature(nameFeature, nameFeature.getClassLabel(i));
+				combo.addEquivalenceClassForFeature(ageFeature, ageFeature.getClassLabel(j));
 				Assertions.assertThat(result.contains(combo));
 			}
 		}
