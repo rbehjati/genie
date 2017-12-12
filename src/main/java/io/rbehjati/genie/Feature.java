@@ -1,4 +1,4 @@
-package io.rbehjati.jenny;
+package io.rbehjati.genie;
 
 import java.util.Arrays;
 import java.util.List;

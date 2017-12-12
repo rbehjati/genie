@@ -3,10 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "jenny.c"
-#include "io_rbehjati_jenny_Jenny.h"
+#include "io_rbehjati_genie_Jenny.h"
 
 
-JNIEXPORT jobjectArray JNICALL Java_io_rbehjati_jenny_Jenny_generator
+JNIEXPORT jobjectArray JNICALL Java_io_rbehjati_genie_Jenny_generator
   (JNIEnv * env, jobject thisObj, jint length, jobjectArray params){
 
     int stringCount = env->GetArrayLength(params);

@@ -1,4 +1,4 @@
-package io.rbehjati.jenny;
+package io.rbehjati.genie;
 
 import java.util.HashMap;
 import java.util.Map;

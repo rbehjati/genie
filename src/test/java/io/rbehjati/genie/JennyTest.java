@@ -1,10 +1,14 @@
-package io.rbehjati.jenny;
+package io.rbehjati.genie;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
+
+import io.rbehjati.genie.Combination;
+import io.rbehjati.genie.Feature;
+import io.rbehjati.genie.Jenny;
 
 public class JennyTest {
 
