@@ -13,7 +13,7 @@ extern "C" {
  * Signature: (I[Ljava/lang/String;)[Ljava/lang/String;
  */
 JNIEXPORT jobjectArray JNICALL Java_io_rbehjati_genie_Jenny_generator
-  (JNIEnv *, jobject, jint, jobjectArray);
+  (JNIEnv *, jobject, jobjectArray);
 
 #ifdef __cplusplus
 }

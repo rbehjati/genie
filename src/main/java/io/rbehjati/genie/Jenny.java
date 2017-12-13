@@ -10,16 +10,16 @@ public class Jenny {
 		System.loadLibrary("jenny");
 	}
 
-	public native String[] generator(int argc, String[] argv);
+	public native String[] generator(String[] argv);
 
 	public List<Combination> generateCombinations(int n, List<Feature> features) {
 		if(features.stream().filter(f -> f.getClassCount() > 26).findAny().isPresent()) {
 			throw new RuntimeException("Don't know how to handle more that 26 equivalence classes in a feature yet!");
 		}
 		List<String> params = new ArrayList<>();
-		params.add("n" + n);
+		params.add("-n" + n);
 		features.forEach(f -> params.add("" + f.getClassCount()));
-		String[] combos = this.generator(params.size(), params.toArray(new String[] {}));
+		String[] combos = this.generator(params.toArray(new String[] {}));
 		
 		List<Combination> featureCombos = new ArrayList<>();
 		for(String combo : combos) {

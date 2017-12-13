@@ -1332,10 +1332,10 @@ ub4 count_tuples( state *s, test *t, int d, int f)
     ub4      count = 0;
     ub1      n = s->n[d][f];
     tu_iter  ctx;
-    feature *this = start_tuple(&ctx, &s->tu[d][f], n, &s->tc[d][f]);
-    while (this) {
-        count += test_tuple(t->f, this, n);
-        this = next_tuple(&ctx);
+    feature *myself = start_tuple(&ctx, &s->tu[d][f], n, &s->tc[d][f]);
+    while (myself) {
+        count += test_tuple(t->f, myself, n);
+        myself = next_tuple(&ctx);
     }
     return count;
 }
@@ -1578,14 +1578,14 @@ void cover_tuples( state *s)
                 tu_iter  ctx;
                 for (f=0; f<s->dim[d]; ++f) {
                     ub1      n = s->n[d][f];
-                    feature *this = start_tuple(&ctx, &s->tu[d][f], n, &s->tc[d][f]);
+                    feature *myself = start_tuple(&ctx, &s->tu[d][f], n, &s->tc[d][f]);
                     
                     /* remove all the tuples covered by it */
-                    while (this) {
-                        if (subset_tuple(extra, tuple_n, this, n)) {
-                            this = delete_tuple(&ctx);
+                    while (myself) {
+                        if (subset_tuple(extra, tuple_n, myself, n)) {
+                            myself = delete_tuple(&ctx);
                         } else {
-                            this = next_tuple(&ctx);
+                            myself = next_tuple(&ctx);
                         }
                     }
                 }
@@ -1598,14 +1598,14 @@ void cover_tuples( state *s)
                 tu_iter  ctx;
                 ub2      f = best_test->f[d];
                 ub1      n = s->n[d][f];
-                feature *this = start_tuple(&ctx, &s->tu[d][f], n, &s->tc[d][f]);
+                feature *myself = start_tuple(&ctx, &s->tu[d][f], n, &s->tc[d][f]);
                 
                 /* remove all the tuples covered by it */
-                while (this) {
-                    if (test_tuple(best_test->f, this, n)) {
-                        this = delete_tuple(&ctx);
+                while (myself) {
+                    if (test_tuple(best_test->f, myself, n)) {
+                        myself = delete_tuple(&ctx);
                     } else {
-                        this = next_tuple(&ctx);
+                        myself = next_tuple(&ctx);
                     }
                 }
             }
@@ -1813,6 +1813,7 @@ char* format_test( test *t, ub2 len)
     for (int i=0; i<len; ++i) {
         str[i] = feature_name[t->f[i]];
     }
+    str[len]='\0';
     return str;
 }
 
