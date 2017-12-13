@@ -10,7 +10,7 @@ JNIEXPORT jobjectArray JNICALL Java_io_rbehjati_genie_Jenny_generator
   (JNIEnv * env, jobject thisObj, jobjectArray params){
 
     int stringCount = 1 + env->GetArrayLength(params);
-    char** rawString = (char**)malloc((stringCount) * sizeof(char*));
+    char** rawString = (char**)malloc(stringCount * sizeof(char*));
 
     rawString[0] = (char *) malloc(strlen("main"));
     strcpy(rawString[0], "main");
