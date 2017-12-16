@@ -6,9 +6,8 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-import io.rbehjati.genie.Combination;
-import io.rbehjati.genie.Feature;
-import io.rbehjati.genie.Jenny;
+import io.rbehjati.genie.model.Combination;
+import io.rbehjati.genie.model.Feature;
 
 public class JennyTest {
 
@@ -30,7 +29,7 @@ public class JennyTest {
 	public void testFeatureCombinationGenerator() {
 		Feature nameFeature = new Feature("name", "Valid", "Invalid");
 		Feature ageFeature = new Feature("age", "Old", "Young");
-		List<Combination> result = new Jenny().generateCombinations(2, Arrays.asList(nameFeature, ageFeature));
+		List<Combination> result = new CombinationGenerator().generateCombinations(2, Arrays.asList(nameFeature, ageFeature));
 		
 		Assertions.assertThat(result).hasSize(4);
 		
