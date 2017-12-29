@@ -47,6 +47,14 @@ public class FormulaTest {
         assertThat(formula.negate().toString()).isEqualTo("!a + !a.!c + !a.!d + !a.!b + !b.!c + !b.!d");
     }
 
+    @Test
+    public void abOrnotAcd_negated(){
+        Formula formula = or(
+                and(new SimpleLiteral("a"), new SimpleLiteral("b")),
+                and(new SimpleLiteral("a").negate(), new SimpleLiteral("c"), new SimpleLiteral("d")));
+        assertThat(formula.negate().toString()).isEqualTo("!a.a + !a.!c + !a.!d + a.!b + !b.!c + !b.!d");
+    }
+
 
     private static class SimpleLiteral implements Literal{
         private final String value;
@@ -57,7 +65,7 @@ public class FormulaTest {
         }
 
         @Override
-        public Term negate() {
+        public SimpleLiteral negate() {
             negated = !negated;
             return this;
         }
@@ -69,7 +77,10 @@ public class FormulaTest {
 
         @Override
         public int compareTo(Object o) {
-            return value.compareTo(((SimpleLiteral)o).value);
+            SimpleLiteral that = (SimpleLiteral) o;
+            return value.equals(that.value)
+                    ? this.toString().compareTo(that.toString())
+                    : value.compareTo(that.value);
         }
 
         @Override
