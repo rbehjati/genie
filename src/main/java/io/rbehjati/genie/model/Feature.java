@@ -1,5 +1,6 @@
 package io.rbehjati.genie.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,6 +27,10 @@ public class Feature {
 
 	public String getName() {
 		return name;
+	}
+	
+	public List<String> getEquivalenceClassLabels() {
+		return new ArrayList<>(equivalenceClassLabels);
 	}
 
 }
