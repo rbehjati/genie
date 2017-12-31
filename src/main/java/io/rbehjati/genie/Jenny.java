@@ -2,9 +2,9 @@ package io.rbehjati.genie;
 
 public class Jenny {
 
-	static {
-		System.loadLibrary("jenny");
-	}
+				static {
+								System.loadLibrary("jenny");
+				}
 
-	public native String[] generator(String[] argv);
+				public native String[] generator(String[] argv);
 }

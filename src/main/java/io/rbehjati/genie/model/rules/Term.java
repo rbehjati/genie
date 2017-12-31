@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Set;
 
 public interface Term {
-	
-	Term negate();
-	
-	List<Set<Literal>> toDisjunctiveNormalForm();
+
+				Term negate();
+
+				List<Set<Literal>> toDisjunctiveNormalForm();
 
 }
