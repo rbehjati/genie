@@ -34,6 +34,19 @@ public class Formula implements Term {
 								return new Formula(conjunctions);
 				}
 
+				public static Formula or(Literal... literals) {
+								List<Set<Literal>> conjunctions = new ArrayList<>();
+								if (literals == null) {
+												return new Formula(conjunctions);
+								}
+								Arrays.asList(literals).forEach(literal -> {
+												Set<Literal> conjunction = new HashSet<>();
+												conjunction.add(literal);
+												conjunctions.add(conjunction);
+								});
+								return new Formula(conjunctions);
+				}
+
 				public static Formula or(Term term1, Term term2) {
 								List<Set<Literal>> dnf = term1.toDisjunctiveNormalForm();
 								dnf.addAll(term2.toDisjunctiveNormalForm());
