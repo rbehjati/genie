@@ -36,4 +36,8 @@ public class Conditional {
 								return Formula.and(leftHandSide, rightHandSide.negate()).toDisjunctiveNormalForm();
 				}
 
+				public Conditional converse(){
+								return new Conditional().given(rightHandSide).then(leftHandSide);
+				}
+
 }
