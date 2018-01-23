@@ -2,11 +2,11 @@ package io.rbehjati.genie.model.rules;
 
 import java.util.Objects;
 
-public class SimpleLiteral implements Literal{
-    final String value;
-    volatile boolean negated = false;
+public class SimpleLiteral implements Literal {
+    private String value;
+    private boolean negated = false;
 
-    SimpleLiteral(String value){
+    SimpleLiteral(String value) {
         this.value = value;
     }
 
@@ -25,8 +25,8 @@ public class SimpleLiteral implements Literal{
     public int compareTo(Object o) {
         SimpleLiteral that = (SimpleLiteral) o;
         return value.equals(that.value)
-                ? this.toString().compareTo(that.toString())
-                : value.compareTo(that.value);
+            ? this.toString().compareTo(that.toString())
+            : value.compareTo(that.value);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class SimpleLiteral implements Literal{
         if (o == null || getClass() != o.getClass()) return false;
         SimpleLiteral that = (SimpleLiteral) o;
         return negated == that.negated &&
-                Objects.equals(value, that.value);
+            Objects.equals(value, that.value);
     }
 
     @Override
