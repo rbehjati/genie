@@ -14,10 +14,12 @@ public class Jenny {
         try {
             System.loadLibrary("jenny");
         } catch (UnsatisfiedLinkError e) {
+            String fileName = "/" + System.mapLibraryName("jenny").replace("dylib", "jnilib");
             try {
-                NativeUtils.loadLibraryFromJar("/" + System.mapLibraryName("jenny"));
+                NativeUtils.loadLibraryFromJar(fileName);
             } catch (IOException e1) {
-                logger.error(e1.getMessage(), e1);
+                logger.error("Could not find " + fileName + " in jar file.", e1);
+                throw new RuntimeException(e1);
             }
         }
     }
