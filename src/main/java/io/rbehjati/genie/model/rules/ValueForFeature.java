@@ -25,6 +25,14 @@ public class ValueForFeature implements Literal {
                 .collect(Collectors.toList()));
     }
 
+    public Feature getFeature() {
+        return feature;
+    }
+
+    public List<String> getValues() {
+        return values;
+    }
+
     @Override
     public int compareTo(Object o) {
         return feature.getName().compareTo(((ValueForFeature) o).feature.getName());
