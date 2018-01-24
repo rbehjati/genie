@@ -6,7 +6,7 @@ import org.junit.Test;
 public class FeatureTest {
 
     @Test
-    public void getLabelIndexReturnsTheCorrectIndex() {
+    public void indexOf_ReturnsTheCorrectIndex() {
         Feature feature = new Feature("Feature", "Value1", "Yes", "No");
         Assertions.assertThat(feature.indexOf("Value1")).isEqualTo(0);
         Assertions.assertThat(feature.indexOf("Yes")).isEqualTo(1);
