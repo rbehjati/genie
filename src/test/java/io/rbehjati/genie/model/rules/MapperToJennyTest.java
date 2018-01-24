@@ -11,7 +11,7 @@ import java.util.Collections;
 public class MapperToJennyTest {
 
     @Test
-    public void conditionalWithoutRightHandSide_isCorrectlyMappedToJennyWithout(){
+    public void conditionalMissingARightHandSide_isCorrectlyMappedToJennyWithout(){
         Feature feature = new Feature("Feature", "T", "F");
         Conditional rule = new Conditional().given(feature.in("T"));
 

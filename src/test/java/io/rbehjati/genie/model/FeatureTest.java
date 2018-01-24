@@ -8,9 +8,9 @@ public class FeatureTest {
     @Test
     public void getLabelIndexReturnsTheCorrectIndex() {
         Feature feature = new Feature("Feature", "Value1", "Yes", "No");
-        Assertions.assertThat(feature.getLabelIndex("Value1")).isEqualTo(0);
-        Assertions.assertThat(feature.getLabelIndex("Yes")).isEqualTo(1);
-        Assertions.assertThat(feature.getLabelIndex("No") + 'a').isEqualTo('c');
+        Assertions.assertThat(feature.indexOf("Value1")).isEqualTo(0);
+        Assertions.assertThat(feature.indexOf("Yes")).isEqualTo(1);
+        Assertions.assertThat(feature.indexOf("No") + 'a').isEqualTo('c');
     }
 
     @Test

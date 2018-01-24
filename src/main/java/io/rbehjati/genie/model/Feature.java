@@ -29,7 +29,7 @@ public class Feature {
         return equivalenceClassLabels.get(i);
     }
 
-    public int getLabelIndex(String equivalenceClassLabel) {
+    public int indexOf(String equivalenceClassLabel) {
         return equivalenceClassLabels.indexOf(equivalenceClassLabel);
     }
 

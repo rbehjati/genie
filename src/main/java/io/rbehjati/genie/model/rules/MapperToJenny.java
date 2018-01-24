@@ -20,8 +20,9 @@ public class MapperToJenny {
         if (literal instanceof ValueForFeature) {
             ValueForFeature valueForFeature = (ValueForFeature) literal;
             Feature feature = valueForFeature.getFeature();
+            // Jenny represents the first value of the first feature as "1a"
             return String.valueOf(features.indexOf(feature) + 1)
-                + valueForFeature.getValues().stream().map(value -> (char) (feature.getLabelIndex(value) + 'a'))
+                + valueForFeature.getValues().stream().map(value -> (char) (feature.indexOf(value) + 'a'))
                 .map(String::valueOf)
                 .collect(Collectors.joining(""));
         } else {
