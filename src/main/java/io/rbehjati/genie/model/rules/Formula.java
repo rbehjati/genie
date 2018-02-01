@@ -29,7 +29,9 @@ public class Formula implements Term {
         dnf1.forEach(conj1 -> dnf2.forEach(conj2 -> {
             Set<Literal> newConjunction = new HashSet<>(conj1);
             newConjunction.addAll(conj2);
-            conjunctions.add(newConjunction);
+            if(!conjunctions.contains(newConjunction)) {
+                conjunctions.add(newConjunction);
+            }
         }));
         return new Formula(conjunctions);
     }
@@ -52,19 +54,28 @@ public class Formula implements Term {
         dnf.addAll(term2.toDisjunctiveNormalForm());
         return new Formula(dnf);
     }
+    // 3, 3, 3. 2, 2, 2, 3, 3, 3, 3, 2, 3, 3, 2, 3, 3, 2, 3
 
     @Override
     public Term negate() {
+        System.out.println(conjunctions.size());
         return conjunctions.stream()
-            .map(conjunction -> {
-                List<Set<Literal>> newConjunctions = new ArrayList<>();
-                conjunction.stream().sorted().forEach(literal -> {
-                    Set<Literal> newConjunction = new HashSet<>();
-                    newConjunction.add((Literal) literal.negate());
-                    newConjunctions.add(newConjunction);
-                });
-                return new Formula(newConjunctions);
-            }).reduce(Formula::and).get();
+            .map(this::negateConjunction)
+            .reduce(Formula::and)
+            .orElse(null);
+    }
+
+    private Formula negateConjunction(Set<Literal> conjunction) {
+        List<Set<Literal>> newConjunctions = new ArrayList<>();
+        conjunction.stream().sorted().forEach(literal -> {
+            Set<Literal> newConjunction = new HashSet<>();
+            newConjunction.add((Literal) literal.negate());
+//            System.out.println("Adding conjunction: " + newConjunction.size() + " to " +
+//                newConjunctions.stream().map(Set::size).map(String::valueOf).collect(Collectors.joining(", ")));
+            newConjunctions.add(newConjunction);
+        });
+        System.out.println(newConjunctions.size());
+        return new Formula(newConjunctions);
     }
 
     @Override

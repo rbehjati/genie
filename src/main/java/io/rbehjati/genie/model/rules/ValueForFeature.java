@@ -8,6 +8,7 @@ import io.rbehjati.genie.model.Feature;
 
 public class ValueForFeature implements Literal {
 
+    private static int cnt = 0;
     private final Feature feature;
     private final List<String> values;
 
@@ -18,6 +19,7 @@ public class ValueForFeature implements Literal {
 
     @Override
     public Term negate() {
+        System.out.println(cnt++ + ") In ValueForFeature.negate " + feature.getName() + ": " + values.size() + "-" + feature.getClassCount());
         return new ValueForFeature(
             feature,
             feature.getEquivalenceClassLabels().stream()
