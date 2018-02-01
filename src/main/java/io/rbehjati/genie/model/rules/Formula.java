@@ -29,7 +29,9 @@ public class Formula implements Term {
         dnf1.forEach(conj1 -> dnf2.forEach(conj2 -> {
             Set<Literal> newConjunction = new HashSet<>(conj1);
             newConjunction.addAll(conj2);
-            conjunctions.add(newConjunction);
+            if(!conjunctions.contains(newConjunction)) {
+                conjunctions.add(newConjunction);
+            }
         }));
         return new Formula(conjunctions);
     }
