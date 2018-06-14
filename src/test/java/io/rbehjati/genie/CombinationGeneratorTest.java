@@ -3,6 +3,7 @@ package io.rbehjati.genie;
 import io.rbehjati.genie.model.Combination;
 import io.rbehjati.genie.model.Feature;
 import io.rbehjati.genie.model.rules.Conditional;
+import io.rbehjati.genie.model.rules.Formula;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
@@ -50,6 +51,20 @@ public class CombinationGeneratorTest {
                 }
             }
         }
+    }
+
+    @Test
+    public void combinationGenerator_returnsNoTuples_forInfeasibleModel() {
+        Feature nameFeature = new Feature("name", "Valid", "Invalid");
+        Feature ageFeature = new Feature("age", "Old", "Young");
+
+        Conditional constraint = new Conditional().given(nameFeature.in("Valid")).then(ageFeature.in("Old"));
+        Conditional negatedConstraint = new Conditional().given(
+            Formula.and(nameFeature.in("Valid"), ageFeature.notIn("Old")));
+        List<Combination> result = new CombinationGenerator()
+            .generateCombinations(2, Arrays.asList(nameFeature, ageFeature), constraint, negatedConstraint);
+
+        Assertions.assertThat(result).hasSize(0);
     }
 
 }

@@ -1,14 +1,10 @@
 package io.rbehjati.genie;
 
 import cz.adamh.utils.NativeUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 public class Jenny {
-
-    private static final Logger logger = LoggerFactory.getLogger(Jenny.class);
 
     static {
         try {
@@ -18,8 +14,7 @@ public class Jenny {
             try {
                 NativeUtils.loadLibraryFromJar(fileName);
             } catch (IOException e1) {
-                logger.error("Could not find " + fileName + " in jar file.", e1);
-                throw new RuntimeException(e1);
+                throw new RuntimeException("Could not find " + fileName + " in jar file.", e1);
             }
         }
     }
