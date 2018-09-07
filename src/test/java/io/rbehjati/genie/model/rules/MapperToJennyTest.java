@@ -1,6 +1,6 @@
 package io.rbehjati.genie.model.rules;
 
-import io.rbehjati.genie.model.Feature;
+import io.rbehjati.genie.model.Factor;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
@@ -12,23 +12,23 @@ public class MapperToJennyTest {
 
     @Test
     public void conditionalMissingARightHandSide_isCorrectlyMappedToJennyWithout(){
-        Feature feature = new Feature("Feature", "T", "F");
-        Conditional rule = new Conditional().given(feature.in("T"));
+        Factor factor = new Factor("Factor", "T", "F");
+        Conditional rule = new Conditional().given(factor.in("T"));
 
-        Assertions.assertThat(MapperToJenny.mapToJennyWithout(Collections.singletonList(feature), rule))
+        Assertions.assertThat(MapperToJenny.mapToJennyWithout(Collections.singletonList(factor), rule))
         .contains("-w1b");
     }
 
     @Test
     public void conditionalWithBothSides_isCorrectlyMappedToJennyWithout(){
-        Feature featureIf = new Feature("if", "T", "F");
-        Feature featureThen = new Feature("then", "T", "F");
+        Factor factorIf = new Factor("if", "T", "F");
+        Factor factorThen = new Factor("then", "T", "F");
 
         Conditional rule = new Conditional()
-            .given(featureIf.in("T"))
-            .then(featureThen.in("T"));
+            .given(factorIf.in("T"))
+            .then(factorThen.in("T"));
 
-        Assertions.assertThat(MapperToJenny.mapToJennyWithout(Arrays.asList(featureIf, featureThen), rule))
+        Assertions.assertThat(MapperToJenny.mapToJennyWithout(Arrays.asList(factorIf, factorThen), rule))
             .contains("-w1a2b");
     }
 

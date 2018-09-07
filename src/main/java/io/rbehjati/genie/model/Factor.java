@@ -1,6 +1,6 @@
 package io.rbehjati.genie.model;
 
-import io.rbehjati.genie.model.rules.ValueForFeature;
+import io.rbehjati.genie.model.rules.ValueForFactor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,12 +8,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Feature {
+public class Factor {
 
     private final String name;
     private final List<String> equivalenceClassLabels;
 
-    public Feature(String name, String... equivalenceClassLabels) {
+    public Factor(String name, String... equivalenceClassLabels) {
         this.name = name;
         this.equivalenceClassLabels = Arrays.asList(equivalenceClassLabels);
     }
@@ -33,13 +33,13 @@ public class Feature {
         return equivalenceClassLabels.indexOf(equivalenceClassLabel);
     }
 
-    public ValueForFeature in(String... values) {
-        return new ValueForFeature(this, values == null ? Collections.emptyList() : Arrays.asList(values));
+    public ValueForFactor in(String... values) {
+        return new ValueForFactor(this, values == null ? Collections.emptyList() : Arrays.asList(values));
     }
 
-    public ValueForFeature notIn(String... values) {
+    public ValueForFactor notIn(String... values) {
         List<String> valuesList = values == null ? Collections.emptyList() : Arrays.asList(values);
-        return new ValueForFeature(
+        return new ValueForFactor(
             this,
             equivalenceClassLabels.stream().filter(l -> !valuesList.contains(l)).collect(Collectors.toList()));
     }

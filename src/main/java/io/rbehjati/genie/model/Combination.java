@@ -5,18 +5,18 @@ import java.util.Map;
 
 public class Combination {
 
-	private Map<Feature, String> equivalenceClassPerFeature = new HashMap<>();
+	private Map<Factor, String> equivalenceClassPerFactor = new HashMap<>();
 
-	public void addEquivalenceClassForFeature(Feature feature, String classLabel) {
-		equivalenceClassPerFeature.put(feature, classLabel);
+	public void addEquivalenceClassForFactor(Factor factor, String classLabel) {
+		equivalenceClassPerFactor.put(factor, classLabel);
 	}
 
-	public Map<Feature, String> getEquivalenceClassPerFeature() {
-		return equivalenceClassPerFeature;
+	public Map<Factor, String> getEquivalenceClassPerFactor() {
+		return equivalenceClassPerFactor;
 	}
 
-	public String getEquivalenceClass(Feature feature) {
-		return equivalenceClassPerFeature.get(feature);
+	public String getEquivalenceClass(Factor factor) {
+		return equivalenceClassPerFactor.get(factor);
 	}
 
 }

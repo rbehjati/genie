@@ -1,7 +1,7 @@
 package io.rbehjati.genie;
 
 import io.rbehjati.genie.model.Combination;
-import io.rbehjati.genie.model.Feature;
+import io.rbehjati.genie.model.Factor;
 import io.rbehjati.genie.model.rules.Conditional;
 import io.rbehjati.genie.model.rules.Formula;
 import org.assertj.core.api.Assertions;
@@ -14,17 +14,17 @@ public class CombinationGeneratorTest {
 
     @Test
     public void testFeatureCombinationGenerator() {
-        Feature nameFeature = new Feature("name", "Valid", "Invalid");
-        Feature ageFeature = new Feature("age", "Old", "Young");
-        List<Combination> result = new CombinationGenerator().generateCombinations(2, Arrays.asList(nameFeature, ageFeature));
+        Factor nameFactor = new Factor("name", "Valid", "Invalid");
+        Factor ageFactor = new Factor("age", "Old", "Young");
+        List<Combination> result = new CombinationGenerator().generateCombinations(2, Arrays.asList(nameFactor, ageFactor));
 
         Assertions.assertThat(result).hasSize(4);
 
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
                 Combination combo = new Combination();
-                combo.addEquivalenceClassForFeature(nameFeature, nameFeature.getClassLabel(i));
-                combo.addEquivalenceClassForFeature(ageFeature, ageFeature.getClassLabel(j));
+                combo.addEquivalenceClassForFactor(nameFactor, nameFactor.getClassLabel(i));
+                combo.addEquivalenceClassForFactor(ageFactor, ageFactor.getClassLabel(j));
                 Assertions.assertThat(result.contains(combo));
             }
         }
@@ -32,12 +32,12 @@ public class CombinationGeneratorTest {
 
     @Test
     public void testFeatureCombinationGeneratorWithRules() {
-        Feature nameFeature = new Feature("name", "Valid", "Invalid");
-        Feature ageFeature = new Feature("age", "Old", "Young");
+        Factor nameFactor = new Factor("name", "Valid", "Invalid");
+        Factor ageFactor = new Factor("age", "Old", "Young");
         List<Combination> result = new CombinationGenerator()
             .generateCombinations(2,
-                Arrays.asList(nameFeature, ageFeature),
-                new Conditional().given(ageFeature.in("Old")).then(nameFeature.in("Valid")));
+                Arrays.asList(nameFactor, ageFactor),
+                new Conditional().given(ageFactor.in("Old")).then(nameFactor.in("Valid")));
 
         Assertions.assertThat(result).hasSize(3);
 
@@ -45,8 +45,8 @@ public class CombinationGeneratorTest {
             for (int j = 0; j < 2; j++) {
                 if (i != 1 || j != 0) {
                     Combination combo = new Combination();
-                    combo.addEquivalenceClassForFeature(nameFeature, nameFeature.getClassLabel(i));
-                    combo.addEquivalenceClassForFeature(ageFeature, ageFeature.getClassLabel(j));
+                    combo.addEquivalenceClassForFactor(nameFactor, nameFactor.getClassLabel(i));
+                    combo.addEquivalenceClassForFactor(ageFactor, ageFactor.getClassLabel(j));
                     Assertions.assertThat(result.contains(combo));
                 }
             }
@@ -55,14 +55,14 @@ public class CombinationGeneratorTest {
 
     @Test
     public void combinationGenerator_returnsNoTuples_forInfeasibleModel() {
-        Feature nameFeature = new Feature("name", "Valid", "Invalid");
-        Feature ageFeature = new Feature("age", "Old", "Young");
+        Factor nameFactor = new Factor("name", "Valid", "Invalid");
+        Factor ageFactor = new Factor("age", "Old", "Young");
 
-        Conditional constraint = new Conditional().given(nameFeature.in("Valid")).then(ageFeature.in("Old"));
+        Conditional constraint = new Conditional().given(nameFactor.in("Valid")).then(ageFactor.in("Old"));
         Conditional negatedConstraint = new Conditional().given(
-            Formula.and(nameFeature.in("Valid"), ageFeature.notIn("Old")));
+            Formula.and(nameFactor.in("Valid"), ageFactor.notIn("Old")));
         List<Combination> result = new CombinationGenerator()
-            .generateCombinations(2, Arrays.asList(nameFeature, ageFeature), constraint, negatedConstraint);
+            .generateCombinations(2, Arrays.asList(nameFactor, ageFactor), constraint, negatedConstraint);
 
         Assertions.assertThat(result).hasSize(0);
     }

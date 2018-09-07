@@ -1,10 +1,8 @@
 package io.rbehjati.genie.model.rules;
 
-import io.rbehjati.genie.model.Feature;
+import io.rbehjati.genie.model.Factor;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import java.text.Normalizer;
 
 import static io.rbehjati.genie.model.rules.Formula.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -59,19 +57,19 @@ public class FormulaTest {
     @Ignore
     public void negateOfABigFormula(){
 
-        Feature[] dokumentgrunnlag = new Feature[]{
-            new Feature("dokumentgrunnlag1", "WithCopy", "MissingCopy", "NotPresent"),
-            new Feature("dokumentgrunnlag2", "WithCopy", "MissingCopy", "NotPresent")
+        Factor[] dokumentgrunnlag = new Factor[]{
+            new Factor("dokumentgrunnlag1", "WithCopy", "MissingCopy", "NotPresent"),
+            new Factor("dokumentgrunnlag2", "WithCopy", "MissingCopy", "NotPresent")
         };
 
-        Feature[] personIdentifikasjon = new Feature[]{
-            new Feature("personIdentifikasjon1", "ValidDuf", "InvalidDuf", "DufInUSe", "ValidNonDuf",  "NotPresent"),
-            new Feature("personIdentifikasjon2", "ValidDuf", "InvalidDuf", "DufInUSe", "ValidNonDuf",  "NotPresent"),
+        Factor[] personIdentifikasjon = new Factor[]{
+            new Factor("personIdentifikasjon1", "ValidDuf", "InvalidDuf", "DufInUSe", "ValidNonDuf",  "NotPresent"),
+            new Factor("personIdentifikasjon2", "ValidDuf", "InvalidDuf", "DufInUSe", "ValidNonDuf",  "NotPresent"),
         };
 
-        Feature[] identitetsbekreftelse = new Feature[]{
-            new Feature("identitetsbekreftelse1", "Approved", "NotApproved",  "NotPresent"),
-            new Feature("identitetsbekreftelse2", "Approved", "NotApproved",  "NotPresent"),
+        Factor[] identitetsbekreftelse = new Factor[]{
+            new Factor("identitetsbekreftelse1", "Approved", "NotApproved",  "NotPresent"),
+            new Factor("identitetsbekreftelse2", "Approved", "NotApproved",  "NotPresent"),
         };
 
         Formula minstEnDokgrunnlagForSkatt = Formula.or(
