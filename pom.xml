@@ -3,7 +3,7 @@
 
 	<groupId>io.github.rbehjati</groupId>
 	<artifactId>genie</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>genie</name>
@@ -33,7 +33,7 @@
         <connection>scm:git:git://github.com/rbehjati/genie.git</connection>
         <developerConnection>scm:git:git@github.com:rbehjati/genie.git</developerConnection>
         <url>https://github.com/rbehjati/genie</url>
-        <tag>genie-0.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
 	<properties>
