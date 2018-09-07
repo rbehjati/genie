@@ -98,6 +98,7 @@
                     <localCheckout>true</localCheckout>
                     <pushChanges>false</pushChanges>
                     <mavenExecutorId>forked-path</mavenExecutorId>
+                    <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -132,6 +133,12 @@
                     <value>true</value>
                 </property>
             </activation>
+            <properties>
+                <gpg.useagent>true</gpg.useagent>
+                <!-- gpg-plugin defaults to trying 'gpg' on the path, this changes that to 'gpg2' instead -->
+                <gpg.executable>gpg2</gpg.executable>
+                 <gpg.passphrase>${gpg.passphrase}</gpg.passphrase>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
