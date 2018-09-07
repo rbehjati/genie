@@ -35,8 +35,8 @@ import java.nio.file.StandardCopyOption;
  * JAR archive. These libraries usualy contain implementation of some methods in
  * native code (using JNI - Java Native Interface).
  * 
- * @see http://adamheinrich.com/blog/2012/how-to-load-native-jni-library-from-jar
- * @see https://github.com/adamheinrich/native-utils
+ * See http://adamheinrich.com/blog/2012/how-to-load-native-jni-library-from-jar
+ * See https://github.com/adamheinrich/native-utils
  *
  */
 public class NativeUtils {
