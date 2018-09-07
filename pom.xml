@@ -7,6 +7,7 @@
 	<packaging>jar</packaging>
 
 	<name>genie</name>
+	<description>A combinatorial test case generator.</description>
 	<url>http://maven.apache.org</url>
 
 	<licenses>
@@ -16,6 +17,13 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+
+	<developers>
+		<developer>
+			<name>Razieh Behjati</name>
+			<email>razieh.github@gmail.com</email>
+		</developer>
+	</developers>
 
     <distributionManagement>
         <snapshotRepository>
