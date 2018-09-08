@@ -1,6 +1,7 @@
 
 # Genie
-[![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)]
+
+[![License](https://img.shields.io/github/license/mashape/apistatus.svg)](http://www.opensource.org/licenses/mit-license.php)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.rbehjati/genie/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.rbehjati/genie)
 
 Genie provides a Java API around [jenny](http://burtleburtle.net/bob/math/jenny.html), a pairwise test case generation tool written in C.
