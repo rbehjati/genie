@@ -9,6 +9,8 @@ Genie provides a Java API around [jenny](http://burtleburtle.net/bob/math/jenny.
 Genie uses a slightly different variant of jenny.c, with an additional method that makes the integration with Java easier.
 This file is included here in directory src/main/resources/native.
 
+## Usage
+TBA
 
 ### Generating the libjenny.so file
 
