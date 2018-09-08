@@ -37,6 +37,11 @@
         </repository>
     </distributionManagement>
 
+    <ciManagement>
+        <system>Travis</system>
+        <url>https://travis-ci.com/rbehjati/genie</url>
+    </ciManagement>
+
     <scm>
         <connection>scm:git:git://github.com/rbehjati/genie.git</connection>
         <developerConnection>scm:git:git@github.com:rbehjati/genie.git</developerConnection>
