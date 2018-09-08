@@ -3,12 +3,12 @@
 
 	<groupId>io.github.rbehjati</groupId>
 	<artifactId>genie</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>genie</name>
 	<description>A combinatorial test case generator.</description>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/rbehjati/genie</url>
 
 	<licenses>
 		<license>
@@ -49,21 +49,29 @@
 		<java.version>1.8</java.version>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
-	</properties>
+        <version.junit>4.12</version.junit>
+        <version.assertj>3.8.0</version.assertj>
+
+        <version.maven-surefire-plugin>2.19.1</version.maven-surefire-plugin>
+        <version.maven-deploy-plugin>2.8.2</version.maven-deploy-plugin>
+        <version.maven-release-plugin>2.5.3</version.maven-release-plugin>
+        <version.nexus-staging-maven-plugin>1.6.7</version.nexus-staging-maven-plugin>
+        <version.maven-gpg-plugin>1.6</version.maven-gpg-plugin>
+    </properties>
 
 	<dependencies>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${version.junit}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
-			<version>3.8.0</version>
+			<version>${version.assertj}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -73,7 +81,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.19.1</version>
+				<version>${version.maven-surefire-plugin}</version>
 				<configuration>
 					<argLine>-Djava.library.path=${basedir}/src/main/resources</argLine>
 					<includes>
@@ -85,7 +93,7 @@
 
 			<plugin>
 				<artifactId>maven-deploy-plugin</artifactId>
-				<version>2.8.2</version>
+				<version>${version.maven-deploy-plugin}</version>
 				<executions>
 					<execution>
 						<id>default-deploy</id>
@@ -100,7 +108,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
+                <version>${version.maven-release-plugin}</version>
                 <configuration>
                     <localCheckout>true</localCheckout>
                     <pushChanges>false</pushChanges>
@@ -119,7 +127,7 @@
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
+                <version>${version.nexus-staging-maven-plugin}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
@@ -145,7 +153,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
+                        <version>${version.maven-gpg-plugin}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
