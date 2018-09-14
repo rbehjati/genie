@@ -39,7 +39,7 @@ must be used:
         String ageValue = combo.getEquivalenceClass(age);
         // do something with age
         // assert something
-    };
+    });
 ```
 
 Note that using combinatorial testing at the unit-test level essentially means multiple assertions in one test method, 
