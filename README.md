@@ -37,7 +37,7 @@ must be used:
 ```java
     combinations.foreach(combo -> {
         String ageValue = combo.getEquivalenceClass(age);
-        // do something with age
+        // do something with ageValue
         // assert something
     });
 ```
