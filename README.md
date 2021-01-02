@@ -1,7 +1,6 @@
 
 # Genie
 
-[![Build Status](https://travis-ci.org/rbehjati/genie.svg?branch=master)](https://travis-ci.org/rbehjati/genie)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.rbehjati/genie.svg?label=Maven%20Central)](https://maven-badges.herokuapp.com/maven-central/io.github.rbehjati/genie)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](http://www.opensource.org/licenses/mit-license.php)
 
